@@ -5,3 +5,4 @@ SQLAlchemy
 pydantic 
 python-dotenv 
 python-multipart 
+email-validator
