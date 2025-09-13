@@ -1,4 +1,5 @@
     // src/components/UserList.jsx
+    import axios from "axios";
     import React, { useState, useEffect } from 'react';
 
     function UserList() {
@@ -8,7 +9,7 @@
 
       useEffect(() => {
         
-        fetch('http://localhost:8000/users/')
+        axios.get("http://localhost:8000/users")
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
