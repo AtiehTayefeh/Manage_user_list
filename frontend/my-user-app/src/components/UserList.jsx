@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
+import './UserList.css'; 
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -9,7 +10,7 @@ function UserList() {
   useEffect(() => {
     axios.get("https://manage-user-list.onrender.com/users")
       .then(response => {
-        setUsers(response.data); 
+        setUsers(response.data);
         setLoading(false);
       })
       .catch(error => {
@@ -22,7 +23,7 @@ function UserList() {
   if (loading) {
     return (
       <div className="container mt-5">
-        <div className="alert alert-info" role="alert">
+        <div className="alert alert-info text-center" role="alert">
           در حال بارگذاری کاربران...
         </div>
       </div>
@@ -32,7 +33,7 @@ function UserList() {
   if (error) {
     return (
       <div className="container mt-5">
-        <div className="alert alert-danger" role="alert">
+        <div className="alert alert-danger text-center" role="alert">
           {error}
         </div>
       </div>
@@ -40,7 +41,7 @@ function UserList() {
   }
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" dir="rtl">
       <h2 className="mb-4 text-center">لیست کاربران</h2>
       {users.length === 0 ? (
         <div className="alert alert-warning text-center" role="alert">
@@ -48,20 +49,27 @@ function UserList() {
         </div>
       ) : (
         <div className="table-responsive">
-          <table className="table table-striped table-hover">
+          <table className="table table-bordered align-middle text-center user-table">
             <thead className="table-dark">
               <tr>
-                <th scope="col">ردیف</th>
+                <th scope="col">شناسه</th>
                 <th scope="col">نام</th>
                 <th scope="col">ایمیل</th>
               </tr>
             </thead>
             <tbody>
               {users.map((user, index) => (
-                <tr key={user.id}>
-                  <th scope="row">{index + 1}</th>
+                <tr key={user.id} className={index % 2 === 0 ? "even-row" : "odd-row"}>
+                  <td>{index + 1}</td>
                   <td>{user.username}</td>
-                  <td>{user.email}</td>
+                  <td>
+                    <a
+                      href={`mailto:${user.email}`}
+                      className="email-link"
+                    >
+                      {user.email}
+                    </a>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -73,4 +81,3 @@ function UserList() {
 }
 
 export default UserList;
-
