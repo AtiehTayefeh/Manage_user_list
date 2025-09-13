@@ -7,7 +7,7 @@ function UserList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("https://manage-user-list.onrender.com/users/")
+    axios.get("https://manage-user-list.onrender.com/users")
       .then(response => {
         setUsers(response.data); 
         setLoading(false);

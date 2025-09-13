@@ -66,6 +66,7 @@ origins = [
         "http://localhost",
 
         "http://localhost:3000", 
+        "https://manage-user-list-1.onrender.com",
         
     ]
 
