@@ -1,0 +1,27 @@
+.user-table {
+    border-color: #333;
+  }
+  
+  .user-table tbody tr.even-row {
+    background-color: #f9f9f9;
+  }
+  
+  .user-table tbody tr.odd-row {
+    background-color: #e9f5ff;
+  }
+  
+  .user-table tbody tr:hover {
+    background-color: #d6eaff;
+    cursor: pointer;
+  }
+  
+  .email-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .email-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+  }
+  
